@@ -33,7 +33,9 @@ function ProductList({ products, children, loading }: ProductListProps) {
         ))}
         {children}
       </ul>
-      {loading && <ProductListSkeleton productsLength={LOAD_MORE_PRODUCTS_AMOUNT} />}
+      {loading && products.length >= FIRST_LOAD_PRODUCTS_AMOUNT && (
+        <ProductListSkeleton productsLength={LOAD_MORE_PRODUCTS_AMOUNT} />
+      )}
     </section>
   );
 }
