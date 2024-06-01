@@ -12,7 +12,6 @@ export async function fetchWithToken({ url, method, body }: FetchWithTokenParame
   const token = generateBasicToken(ID, PASSWORD);
   const response = await fetch(url, {
     method,
-
     body,
     headers: {
       Authorization: token,

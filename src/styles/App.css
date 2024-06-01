@@ -25,11 +25,7 @@ body {
   min-width: 325px;
   height: 100vh;
 }
-.scr-only {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-}
+
 @media screen and (max-width: 1024px) {
   #root {
     width: var(--mobile-width);

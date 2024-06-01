@@ -1,18 +1,21 @@
+import { CartActionErrorModal } from '../Modal';
+
 import CartBadgeButton from './CartBadgeButton';
 import Logo from './Logo';
 import style from './style.module.css';
 
 interface HeaderProps {
   cartItemsLength: number;
-  headerRef: React.MutableRefObject<HTMLElement | null>;
+  cartItemsFetchError: boolean;
 }
 
-function Header({ cartItemsLength, headerRef }: HeaderProps) {
+function Header({ cartItemsLength, cartItemsFetchError }: HeaderProps) {
   return (
     <>
-      <header ref={headerRef} className={style.header}>
+      <header className={style.header}>
         <Logo />
         <CartBadgeButton cartItemsLength={cartItemsLength} />
+        <CartActionErrorModal error={cartItemsFetchError} />
       </header>
     </>
   );

@@ -1,4 +1,4 @@
-import { ServerResponse } from '@src/appTypes';
+import { ApiResponse } from '@src/appTypes';
 
 interface MakeServerResponseParams<T> {
   page: number;
@@ -11,7 +11,7 @@ export function makeServerResponse<T>({
   size,
   last = false,
   content,
-}: MakeServerResponseParams<T>): ServerResponse<T> {
+}: MakeServerResponseParams<T>): ApiResponse<T> {
   return {
     content,
     pageable: {

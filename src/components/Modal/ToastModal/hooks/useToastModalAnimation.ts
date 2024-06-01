@@ -32,5 +32,5 @@ export default function useToastModalAnimation({ isOpen, closeModal }: { isOpen:
     };
   }, [isOpen]);
 
-  return { isOn, timeout };
+  return { isOn };
 }

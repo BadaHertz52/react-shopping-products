@@ -29,23 +29,15 @@ module.exports = {
         groups: [['builtin', 'external'], 'internal', 'parent', 'sibling', 'index'],
         pathGroups: [
           {
-            pattern: 'next',
-            group: 'builtin',
-          },
-          {
             pattern: 'react',
             group: 'builtin',
-          },
-          {
-            pattern: '@MyDesignSystem/**',
-            group: 'internal',
           },
           {
             pattern: 'src/**',
             group: 'internal',
           },
         ],
-        pathGroupsExcludedImportTypes: ['src/**', '@MyDesignSystem/**'],
+        pathGroupsExcludedImportTypes: ['src/**'],
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,

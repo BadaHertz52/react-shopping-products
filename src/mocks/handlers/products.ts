@@ -2,6 +2,7 @@ import { END_POINTS } from '@apis/endPoints';
 import { Category, PriceSort, Product } from '@appTypes/index';
 import products from '@mocks/data/products.json';
 import { makeServerResponse } from '@mocks/utils/serverResponse';
+import { FIRST_LOAD_PRODUCTS_AMOUNT, LOAD_MORE_PRODUCTS_AMOUNT, PRODUCT_LIST_PAGE } from '@src/constants';
 import { http, HttpResponse } from 'msw';
 
 const filterProducts = (category: Category | null, products: Product[]) => {
@@ -27,9 +28,9 @@ const productsHandler = [
 
     const filteredProducts = filterProducts(category, products as Product[]);
     const sortedProducts = sortProducts(sort, filteredProducts);
-
-    const limit = page === 0 ? 20 : 4;
-    const start = page === 0 ? 0 : (page - 1) * 4 + 20;
+    const { first, second } = PRODUCT_LIST_PAGE;
+    const limit = page === first ? FIRST_LOAD_PRODUCTS_AMOUNT : LOAD_MORE_PRODUCTS_AMOUNT;
+    const start = page === first ? 0 : (page - second) * LOAD_MORE_PRODUCTS_AMOUNT + FIRST_LOAD_PRODUCTS_AMOUNT;
     const end = start + limit;
 
     const response = makeServerResponse<Product[]>({

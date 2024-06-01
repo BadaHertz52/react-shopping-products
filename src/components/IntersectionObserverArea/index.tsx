@@ -1,30 +1,19 @@
-import React, { useEffect } from 'react';
+import { useIntersectionObserver } from '@src/hooks';
+import React from 'react';
 
 interface IntersectionObserverAreaProps {
-  callback: (entries: IntersectionObserverEntry[]) => void;
+  runOnObserverTargetAppear: () => void;
   targetRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-function IntersectionObserverArea({
+const IntersectionObserverArea = ({
   targetRef,
-  callback,
+  runOnObserverTargetAppear,
   children,
-}: React.PropsWithChildren<IntersectionObserverAreaProps>) {
-  const observer = new IntersectionObserver(callback, { threshold: 1 });
-
-  useEffect(() => {
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
-    }
-
-    return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
-      }
-    };
-  }, [callback, targetRef]);
+}: React.PropsWithChildren<IntersectionObserverAreaProps>) => {
+  useIntersectionObserver({ targetRef, runOnObserverTargetAppear });
 
   return <div>{children}</div>;
-}
+};
 
 export default IntersectionObserverArea;

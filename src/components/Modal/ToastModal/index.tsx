@@ -1,7 +1,6 @@
-import { useToastModalAnimation } from '@hooks/index';
-
 import ModalPortal from '../ModalPortal';
 
+import useToastModalAnimation from './hooks/useToastModalAnimation';
 import style from './style.module.css';
 
 interface ToastModalProps extends React.HTMLAttributes<HTMLDivElement> {

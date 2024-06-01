@@ -1,37 +1,28 @@
 import { fetchProduct } from '@apis/index';
-import { CartItem, Filtering, Product } from '@appTypes/index';
+import { Filtering, Product } from '@appTypes/index';
 import { Dropdown, IntersectionObserverArea } from '@components/index';
-import { CATEGORY_OPTIONS, PRICE_SORT_OPTIONS } from '@constants/index';
+import { CATEGORY_OPTIONS, PRICE_SORT_OPTIONS, PRODUCT_LIST_PAGE } from '@constants/index';
 import { useFilteredProducts, useStackProducts } from '@hooks/index';
 import useFetch from '@hooks/useFetch';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import ProductList from './ProductList';
 import style from './style.module.css';
 
-interface ProductListPageProps {
-  cartItems: CartItem[];
-}
-
-function ProductListPage({ cartItems }: ProductListPageProps) {
+function ProductListPage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(PRODUCT_LIST_PAGE.first);
   const [isLastPage, setIsLastPage] = useState(false);
   const [filtering, setFiltering] = useState<Filtering>({ category: '', sort: 'price,asc' });
-  const targetRef = useRef<HTMLDivElement | null>(null);
+  const observerTargetRef = useRef<HTMLDivElement | null>(null);
 
   const { fetch, loading, error } = useFetch<typeof fetchProduct>(fetchProduct);
 
   const { getStackedProducts } = useStackProducts({
     fetch,
-    products,
-    filtering,
-    isLast: isLastPage,
-    productLength: products.length,
   });
   const { getFilteredProducts } = useFilteredProducts({
     fetch,
-    filtering,
   });
 
   const updateState = ({
@@ -48,17 +39,15 @@ function ProductListPage({ cartItems }: ProductListPageProps) {
     setPage(newPage);
   };
 
-  const observerCallback = async (entries: IntersectionObserverEntry[]) => {
-    if (!entries[0].isIntersecting) return;
-
-    const result = await getStackedProducts(page);
+  const runOnObserverTargetAppear = useCallback(async () => {
+    const result = await getStackedProducts({ page, isLastPage, products, filtering });
     if (!result) return;
 
     updateState(result);
-  };
+  }, [page, products, isLastPage, filtering]);
 
   const handleFilteringProducts = async () => {
-    const result = await getFilteredProducts();
+    const result = await getFilteredProducts(filtering);
     if (!result) return;
 
     updateState(result);
@@ -87,9 +76,13 @@ function ProductListPage({ cartItems }: ProductListPageProps) {
         <Dropdown label="카테고리" name="category" options={CATEGORY_OPTIONS} onChange={handleChangeOption} />
         <Dropdown label="가격순" name="sort" options={PRICE_SORT_OPTIONS} onChange={handleChangeOption} />
       </div>
-      <IntersectionObserverArea callback={observerCallback} targetRef={targetRef}>
-        <ProductList products={products} targetRef={targetRef} loading={loading} cartItems={cartItems} />
-      </IntersectionObserverArea>
+      <ProductList products={products} loading={loading}>
+        <IntersectionObserverArea targetRef={observerTargetRef} runOnObserverTargetAppear={runOnObserverTargetAppear}>
+          <div className={style.observerTarget} ref={observerTargetRef}>
+            <span>observer target</span>
+          </div>
+        </IntersectionObserverArea>
+      </ProductList>
     </div>
   );
 }

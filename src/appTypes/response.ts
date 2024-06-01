@@ -2,7 +2,7 @@
  * 서버 응답의 공통 구조를 정의하는 인터페이스
  * @template T - response의 content타입
  */
-export interface ServerResponse<T> {
+export interface ApiResponse<T> {
   totalPages: number;
   totalElements: number;
   sort: {

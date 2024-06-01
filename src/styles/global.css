@@ -8,6 +8,28 @@
   --desktop-width: 64rem;
   --header-height: 4rem;
   --header-z-index: 100;
+  --modal-z-index: 9999;
+  --layout-top-padding: calc(var(--header-height) + 2.25rem);
+  --page-title-height: 2.1875rem;
+  --page-title-margin-bottom: 1.5rem;
+  --product-list-wrapper-margin-top: 1.75rem;
+}
+
+.skeleton {
+  animation: skeleton-animation 10s infinite ease-out;
+  background: linear-gradient(-90deg, #aaa, #f0f0f0, #aaa, #f0f0f0);
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .logo {
@@ -26,7 +48,8 @@
 }
 
 .page__title {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--page-title-margin-bottom);
+  height: var(--page-title-height);
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 2.1719rem;
@@ -52,4 +75,10 @@
   font-size: 0.75rem;
   line-height: 0.9375rem;
   font-family: Noto Sans;
+}
+
+.scr-only {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
 }

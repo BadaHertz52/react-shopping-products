@@ -1,2 +1,2 @@
-export { default as PageRequest } from './PageRequest';
-export { default as CartAction } from './CartAction';
+export { default as PageRequestError } from './PageRequestError';
+export { default as CartActionError } from './CartActionError';

@@ -1,56 +1,32 @@
 import '@styles/App.css';
 import '@styles/reset.css';
 import '@styles/global.css';
-import { CartAction, PageRequest } from '@components/Fallbacks';
-import { Header, Layout, ToastModal } from '@components/index';
-import { useEffect, useRef, useState } from 'react';
+import { Header, Layout, PageRequestError } from '@components/index';
+import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { CartItemsContext } from './contexts';
-import { useCartAction } from './hooks';
-import { ProductListPage } from './pages';
+import { useCartItemIds } from './hooks';
+import ProductListPageSkeleton from './pages/ProductListPage/Skeleton/ProductListPageSkeleton/index.';
 
-interface HeaderPosition {
-  top: number;
-  left: number;
-}
+const ProductListPage = lazy(() => import('@pages/ProductListPage'));
 
 function App() {
-  const { cartItems, getCartItemList, handleCartAction, error, setCartActionError } = useCartAction();
-  const [headerPosition, setHeaderPosition] = useState<HeaderPosition | null>(null);
+  const { cartItemIds, refreshCartItemIds, error: cartItemsFetchError } = useCartItemIds();
 
-  const headerRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    getCartItemList();
-  }, []);
-
-  useEffect(() => {
-    if (!headerRef.current) return;
-
-    const domRect = headerRef.current.getClientRects()[0];
-
-    setHeaderPosition({
-      top: domRect.top,
-      left: domRect.left,
-    });
-  }, [headerRef]);
-
+  const cartItemsLength = cartItemIds ? Array.from(cartItemIds).length : 0;
   return (
     <>
-      <Header cartItemsLength={cartItems.length} headerRef={headerRef} />
+      <Header cartItemsLength={cartItemsLength} cartItemsFetchError={cartItemsFetchError} />
       <Layout>
-        <ErrorBoundary FallbackComponent={({ error }) => <PageRequest error={error} />}>
-          <CartItemsContext.Provider value={{ handleCartAction }}>
-            <ProductListPage cartItems={cartItems} />
+        <ErrorBoundary FallbackComponent={({ error }) => <PageRequestError error={error} />}>
+          <CartItemsContext.Provider value={{ cartItemIds, refreshCartItemIds }}>
+            <Suspense fallback={<ProductListPageSkeleton />}>
+              <ProductListPage />
+            </Suspense>
           </CartItemsContext.Provider>
         </ErrorBoundary>
       </Layout>
-      {headerPosition && (
-        <ToastModal isOpen={error} closeModal={() => setCartActionError(false)} position={headerPosition}>
-          <CartAction />
-        </ToastModal>
-      )}
     </>
   );
 }

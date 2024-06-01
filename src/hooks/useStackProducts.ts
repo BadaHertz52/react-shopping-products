@@ -1,5 +1,6 @@
 import { fetchProduct } from '@apis/index';
 import { Filtering, Product } from '@appTypes/index';
+import { PRODUCT_LIST_PAGE } from '@src/constants';
 
 interface UseStackProductsProps {
   fetch: (...args: Parameters<typeof fetchProduct>) => Promise<
@@ -9,22 +10,24 @@ interface UseStackProductsProps {
       }>
     | undefined
   >;
-  products: Product[];
-  filtering: Filtering;
-  isLast: boolean;
-  productLength: number;
 }
 
-const useStackProducts = ({ fetch, products, filtering, isLast, productLength }: UseStackProductsProps) => {
+export interface StackPrams {
+  products: Product[];
+  filtering: Filtering;
+  isLastPage: boolean;
+  page: number;
+}
+
+const useStackProducts = ({ fetch }: UseStackProductsProps) => {
   /**
    * 무한 스크롤 시 상품 목록을 추가해서 넣어주는 기능
    */
-  const getStackedProducts = async (page: number) => {
-    if (isLast || !productLength) return;
+  const getStackedProducts = async ({ products, filtering, isLastPage, page }: StackPrams) => {
+    if (isLastPage || !products.length) return;
 
-    const newPage = page + 1;
+    const newPage = page ? page + PRODUCT_LIST_PAGE.plus : PRODUCT_LIST_PAGE.second;
     const result = await fetch({ filtering, page: newPage });
-
     if (result === undefined) return;
 
     return {

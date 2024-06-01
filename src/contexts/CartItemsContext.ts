@@ -1,16 +1,8 @@
-import { CartItem } from '@src/appTypes';
 import { createContext } from 'react';
 
 interface CarItemsContextType {
-  handleCartAction: ({
-    isInCart,
-    productId,
-    cartItem,
-  }: {
-    isInCart: boolean;
-    productId: number;
-    cartItem: CartItem | undefined;
-  }) => Promise<void> | undefined;
+  refreshCartItemIds: () => Promise<void>;
+  cartItemIds: Map<number, number> | null;
 }
 
 const CartItemsContext = createContext<CarItemsContextType | null>(null);

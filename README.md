@@ -1,5 +1,38 @@
 # react-shopping-products
 
+## 배포
+
+[🌟 배포 페이지 바로가기](https://badahertz52.github.io/react-shopping-products/)
+
+### 구현 화면
+
+#### step1
+
+<img src="./readmeImages/step1.gif" height="500px" />
+
+### 오류 화면
+
+#### 페이지 렌더링 시 api 요청 오류 화면
+
+<img src="./readmeImages/pageError.png" width="400px" alt="페이지 렌더링 시 api 요청 오류 화면">
+
+## 기술 스택
+
+- React (with Vite)
+- TypeScript
+- css module
+- 테스트 : vitest, msw
+
+## 빌드 및 테스트
+
+```dash
+//빌드
+npm run build
+
+//테스트
+npm run test
+```
+
 ## 기능 구현 목록
 
 <details>

@@ -32,7 +32,7 @@ const BUTTON_INFO: Record<ButtonType, ButtonInfo> = {
 
 function CartActionButton({ buttonType, onClick }: CartActionButtonProps) {
   const { src, alt, text } = BUTTON_INFO[buttonType];
-  const className = `${style.button} ${style[buttonType]}`;
+  const className = `cart-action-button ${style.button} ${style[buttonType]}`;
 
   return (
     <button onClick={onClick} className={className}>
