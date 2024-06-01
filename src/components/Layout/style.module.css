@@ -1,0 +1,7 @@
+.layout {
+  padding: 0 1.5625rem;
+  padding-top: var(--layout-top-padding);
+  padding-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+}

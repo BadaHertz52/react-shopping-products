@@ -1,0 +1,12 @@
+.toastModal {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 3000ms ease-in-out;
+}
+
+.toastModal.on {
+  opacity: 1;
+}

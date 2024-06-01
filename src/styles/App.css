@@ -1,0 +1,33 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  /* 스크롤바 */
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0.625rem;
+    background-color: #555555;
+    padding: 0 1px;
+  }
+}
+
+#root {
+  margin: 0 auto;
+  width: var(--desktop-width);
+  min-width: 325px;
+  height: 100vh;
+}
+
+@media screen and (max-width: 1024px) {
+  #root {
+    width: var(--mobile-width);
+  }
+}

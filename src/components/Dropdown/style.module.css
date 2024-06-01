@@ -1,0 +1,11 @@
+.select {
+  gap: 0.5rem;
+  border: 0.0625rem solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 7.8125rem;
+  height: 2.25rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
