@@ -1,6 +1,0 @@
-.modalPortal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--modal-z-index);
-}
