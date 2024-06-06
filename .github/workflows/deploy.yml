@@ -23,19 +23,29 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: 'npm'
+
+      - name: Verify Node.js version
+        run: node -v
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+
       - name: Build
         run: npm run build
         env:
           VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
           VITE_ID: ${{ secrets.VITE_ID }}
           VITE_PASSWORD: ${{ secrets.VITE_PASSWORD }}
+
+      - name: Verify Node.js version before deploy
+        run: node -v
+
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
