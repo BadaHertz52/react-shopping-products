@@ -1,0 +1,18 @@
+.message {
+  margin-top: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.confirmButton {
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--border-color);
+  padding: 0.5rem 0.875rem;
+  &:hover {
+    border: none;
+    background-color: var(--black);
+    color: var(--white);
+  }
+}

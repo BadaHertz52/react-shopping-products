@@ -1,0 +1,10 @@
+.quantityControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 1.5rem;
+  span {
+    margin: 0 0.8125rem;
+  }
+}

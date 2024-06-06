@@ -1,0 +1,17 @@
+.title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.1719rem;
+  font-family: Noto Sans KR;
+}
+
+.closeButton {
+  border-radius: 0.3125rem;
+  background-color: var(--black);
+  aspect-ratio: 10;
+  width: 100%;
+  max-height: 50px;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1rem;
+}

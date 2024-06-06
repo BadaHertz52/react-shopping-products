@@ -1,6 +1,8 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vitest/config';
 
+const srcPath = resolve(__dirname, 'src');
+
 export default defineConfig({
   test: {
     globals: true,
@@ -9,18 +11,18 @@ export default defineConfig({
   },
   resolve: {
     alias: [
-      { find: '@src', replacement: resolve(__dirname, 'src') },
-      { find: '@components', replacement: resolve(__dirname, 'src/components') },
-      { find: '@contexts', replacement: resolve(__dirname, 'src/contexts') },
-      { find: '@styles', replacement: resolve(__dirname, 'src/styles') },
-      { find: '@assets', replacement: resolve(__dirname, 'src/assets') },
-      { find: '@constants', replacement: resolve(__dirname, 'src/constants') },
-      { find: '@utils', replacement: resolve(__dirname, 'src/utils') },
-      { find: '@mocks', replacement: resolve(__dirname, 'src/mocks') },
-      { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') },
-      { find: '@pages', replacement: resolve(__dirname, 'src/pages') },
-      { find: '@apis', replacement: resolve(__dirname, 'src/apis') },
-      { find: '@appTypes', replacement: resolve(__dirname, 'src/appTypes') },
+      { find: '@src', replacement: srcPath },
+      { find: '@components', replacement: resolve(srcPath, 'components') },
+      { find: '@contexts', replacement: resolve(srcPath, 'contexts') },
+      { find: '@styles', replacement: resolve(srcPath, 'styles') },
+      { find: '@assets', replacement: resolve(srcPath, 'assets') },
+      { find: '@constants', replacement: resolve(srcPath, 'constants') },
+      { find: '@utils', replacement: resolve(srcPath, 'utils') },
+      { find: '@mocks', replacement: resolve(srcPath, 'mocks') },
+      { find: '@hooks', replacement: resolve(srcPath, 'hooks') },
+      { find: '@pages', replacement: resolve(srcPath, 'pages') },
+      { find: '@apis', replacement: resolve(srcPath, 'apis') },
+      { find: '@appTypes', replacement: resolve(srcPath, 'appTypes') },
     ],
   },
 });

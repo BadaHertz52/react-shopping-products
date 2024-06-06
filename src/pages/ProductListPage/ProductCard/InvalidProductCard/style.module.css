@@ -1,0 +1,23 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  height: 100%;
+}
+.message {
+  margin: auto;
+  width: 100%;
+  color: #a7a7a7;
+  font-size: 1.1rem;
+  text-align: center;
+}

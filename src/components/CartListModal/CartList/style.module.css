@@ -1,0 +1,23 @@
+.cartList {
+  margin-top: 1.5rem;
+  min-height: 2rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  li:last-child {
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+.empty {
+  margin: 0.875rem 0;
+  width: 100%;
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+.cartImg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: black;
+  margin-right: 0.5rem;
+}

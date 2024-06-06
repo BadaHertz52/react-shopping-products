@@ -1,0 +1,9 @@
+.countButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 1.5rem;
+  height: 1.5rem;
+}

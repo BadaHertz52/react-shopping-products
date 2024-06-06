@@ -1,0 +1,24 @@
+[
+  {
+    "id": 3994,
+    "quantity": 1,
+    "product": {
+      "id": 6,
+      "name": "로맨스소설",
+      "price": 1000,
+      "imageUrl": "",
+      "category": "books"
+    }
+  },
+  {
+    "id": 3995,
+    "quantity": 2,
+    "product": {
+      "id": 13,
+      "name": "스마트폰",
+      "price": 2000,
+      "imageUrl": "",
+      "category": "electronics"
+    }
+  }
+]

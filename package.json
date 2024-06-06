@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://badahertz52.github.io/react-shopping-products/",
+  "homepage": "https://badahertz52.github.io/react-shopping-products",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
@@ -12,6 +12,8 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.40.1",
+    "badahertz52-react-modules-components": "^0.0.17",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.13"

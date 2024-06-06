@@ -1,4 +1,4 @@
-import { Filtering, Product, ApiResponse } from '@appTypes/index';
+import { ApiResponse, Filtering, Product } from '@appTypes/index';
 import { LOAD_MORE_PRODUCTS_AMOUNT } from '@constants/index';
 import { fetchWithToken } from '@utils/index';
 
