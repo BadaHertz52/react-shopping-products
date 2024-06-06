@@ -27,7 +27,7 @@ jobs:
       - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
           cache: 'npm'
 
       - name: Verify Node.js version
@@ -43,11 +43,10 @@ jobs:
           VITE_ID: ${{ secrets.VITE_ID }}
           VITE_PASSWORD: ${{ secrets.VITE_PASSWORD }}
 
-      - name: Verify Node.js version before deploy
-        run: node -v
-
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ./dist
+        env:
+          NODE_VERSION: 20 # peaceiris/actions-gh-pages에서 Node.js 버전 설정을 추가
