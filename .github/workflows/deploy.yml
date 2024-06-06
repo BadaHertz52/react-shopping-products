@@ -35,6 +35,11 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
+      - name: Remove package-lock.json and node_modules
+        run: |
+          rm -rf node_modules
+          rm -f package-lock.json
+
       - name: Build
         run: npm run build
         env:
