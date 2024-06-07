@@ -24,7 +24,9 @@ const CartActionErrorModal = ({ error }: CartActionErrorModalProps) => {
           modalTargetEl={rootEl}
           toastDuration={3000}
           isNeedAnimation={true}
-          animationDuration={2500}
+          animationDuration={2000}
+          backgroundColor={{ modal: '#ffc9c9' }}
+          contentsPadding="0"
         >
           <CartActionError />
         </ToastModal>

@@ -1,21 +1,15 @@
 .cartActionError {
   display: flex;
-  position: fixed;
-  top: var(--header-height);
-  left: calc((100vw - var(--desktop-width)) / 2);
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: var(--header-z-index);
-  background-color: var(--pink);
+  gap: 10px;
   padding: 0.75rem 4.8125rem;
   width: var(--desktop-width);
 }
 
 @media screen and (max-width: 768px) {
   .cartActionError {
-    left: 0;
-    flex-direction: column;
-    gap: 0.5rem;
     width: var(--mobile-width);
   }
 }
