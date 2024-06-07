@@ -13,8 +13,20 @@ const ProductListPageSkeleton = () => {
     <div>
       <h1 className="page__title">bpple 상품 목록</h1>
       <div className={style.dropdownGroup}>
-        <Dropdown label="카테고리" name="category" options={CATEGORY_OPTIONS} onChange={() => {}} />
-        <Dropdown label="가격순" name="sort" options={PRICE_SORT_OPTIONS} onChange={() => {}} />
+        <Dropdown
+          label="카테고리"
+          name="category"
+          selectedValue={CATEGORY_OPTIONS[0].value}
+          options={CATEGORY_OPTIONS}
+          onChange={() => {}}
+        />
+        <Dropdown
+          label="가격순"
+          name="sort"
+          selectedValue={PRICE_SORT_OPTIONS[0].value}
+          options={PRICE_SORT_OPTIONS}
+          onChange={() => {}}
+        />
       </div>
       <ProductList.Skeleton productsLength={20} />
     </div>
@@ -52,8 +64,20 @@ const ProductListPage = () => {
     <div>
       <h1 className="page__title">bpple 상품 목록</h1>
       <div className={style.dropdownGroup}>
-        <Dropdown label="카테고리" name="category" options={CATEGORY_OPTIONS} onChange={handleChangeOption} />
-        <Dropdown label="가격순" name="sort" options={PRICE_SORT_OPTIONS} onChange={handleChangeOption} />
+        <Dropdown
+          label="카테고리"
+          name="category"
+          options={CATEGORY_OPTIONS}
+          selectedValue={filtering.category}
+          onChange={handleChangeOption}
+        />
+        <Dropdown
+          label="가격순"
+          name="sort"
+          options={PRICE_SORT_OPTIONS}
+          selectedValue={filtering.sort}
+          onChange={handleChangeOption}
+        />
       </div>
       <ProductList products={products}>
         {showMoreProductsSkeleton &&
