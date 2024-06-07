@@ -11,7 +11,10 @@ const useProductList = (filtering: Filtering) => {
   const queryFn: QueryFunction<FetchProductListReturnType, QueryKey, unknown> = async ({ pageParam = 0 }) =>
     fetchProductList({ filtering, page: pageParam as number });
 
-  const { data, fetchNextPage, error, refetch, status } = useInfiniteQuery<FetchProductListReturnType, Error>({
+  const { data, fetchNextPage, error, refetch, status, hasNextPage } = useInfiniteQuery<
+    FetchProductListReturnType,
+    Error
+  >({
     queryKey: queryKey,
     queryFn: queryFn,
     initialPageParam: PRODUCT_LIST_PAGE.first,
@@ -48,6 +51,7 @@ const useProductList = (filtering: Filtering) => {
     fetchNextPage,
     status,
     error,
+    hasNextPage,
   };
 };
 export default useProductList;

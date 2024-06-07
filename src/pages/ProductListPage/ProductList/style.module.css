@@ -1,11 +1,11 @@
 .wrapper {
   margin-top: var(--product-list-wrapper-margin-top);
   width: 100%;
-  max-height: calc(
+  height: calc(
     100vh - var(--layout-top-padding) - var(--layout-bottom-padding) - var(--page-title-height) -
       var(--page-title-margin-bottom) - var(--product-list-wrapper-margin-top) - var(--product-list-wrapper-margin-top)
   );
-  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .productList {

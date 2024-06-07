@@ -26,13 +26,11 @@ const ProductListPage = () => {
   const [showMoreProductsSkeleton, setShowMoreProductsSkeleton] = useState(false);
   const observerTargetRef = useRef<HTMLDivElement | null>(null);
 
-  const { products, fetchNextPage, status, error } = useProductList(filtering);
+  const { products, fetchNextPage, status, error, hasNextPage } = useProductList(filtering);
 
   useEffect(() => {
-    if (status === 'success' && showMoreProductsSkeleton) {
-      setTimeout(() => {
-        setShowMoreProductsSkeleton(false);
-      }, 10000);
+    if (status !== 'pending' && showMoreProductsSkeleton) {
+      setShowMoreProductsSkeleton(false);
     }
   }, [status, showMoreProductsSkeleton]);
 
@@ -61,7 +59,7 @@ const ProductListPage = () => {
         {showMoreProductsSkeleton &&
           Array.from({ length: LOAD_MORE_PRODUCTS_AMOUNT }).map(() => <ProductCard.Skeleton />)}
         <IntersectionObserverArea targetRef={observerTargetRef} runOnObserverTargetAppear={runOnObserverTargetAppear}>
-          <div className={style.observerTarget} ref={observerTargetRef}>
+          <div className={style.observerTarget} ref={hasNextPage ? observerTargetRef : null}>
             <span>observer target</span>
           </div>
         </IntersectionObserverArea>

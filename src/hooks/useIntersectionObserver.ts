@@ -24,7 +24,7 @@ const useIntersectionObserver = ({ targetRef, runOnObserverTargetAppear, options
       if (!targetRef.current) return;
       observer.unobserve(targetRef.current);
     };
-  }, [targetRef, runOnObserverTargetAppear]);
+  }, [targetRef]);
 };
 
 export default useIntersectionObserver;
