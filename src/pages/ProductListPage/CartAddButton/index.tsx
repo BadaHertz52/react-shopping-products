@@ -11,15 +11,13 @@ interface CartAddButtonProps {
 const CartAddButton = ({ productId }: CartAddButtonProps) => {
   const { mutateAsync: addMutate, error, isPending } = useAddCartItem();
 
-  const className = `cart-action-button ${style.cartAddButton} `;
-
   const handleClickButton = () => {
     addMutate({ productId });
   };
 
   return (
     <>
-      <button onClick={handleClickButton} className={className} disabled={isPending}>
+      <button onClick={handleClickButton} className={style.cartAddButton} disabled={isPending}>
         <img src={AddCartIcon} alt="상품 장바구니 담기" />
         <span className="button__text">담기</span>
       </button>

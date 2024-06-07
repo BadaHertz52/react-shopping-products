@@ -1,0 +1,24 @@
+.wrapper {
+  margin-top: var(--product-list-wrapper-margin-top);
+  width: 100%;
+  max-height: calc(
+    100vh - var(--layout-top-padding) - var(--layout-bottom-padding) - var(--page-title-height) -
+      var(--page-title-margin-bottom) - var(--product-list-wrapper-margin-top) - var(--product-list-wrapper-margin-top)
+  );
+  overflow-x: hidden;
+}
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1rem;
+  padding-right: 0.5rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .productList {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem 0.75rem;
+  }
+}

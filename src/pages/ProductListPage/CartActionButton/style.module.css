@@ -1,10 +1,16 @@
 .cartActionButton {
   position: absolute;
-  bottom: var(--product-card__contents-padding-horizon);
+  bottom: var(--product-card__contents-padding-vertical);
+
+  button {
+    border-radius: 0.25rem;
+    width: 3.6875rem;
+    height: 1.5rem;
+  }
 }
 .cartActionButton.add {
-  left: var(--product-card__contents-padding-vertical);
+  left: var(--product-card__contents-padding-horizon);
 }
 .cartActionButton.quantity {
-  right: var(--product-card__contents-padding-vertical);
+  right: var(--product-card__contents-padding-horizon);
 }

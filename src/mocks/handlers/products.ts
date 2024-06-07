@@ -39,7 +39,7 @@ const productsHandler = [
       content: sortedProducts.slice(start, end),
     });
 
-    return HttpResponse.json(response);
+    return HttpResponse.json(response, { status: 200 });
   }),
 ];
 

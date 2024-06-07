@@ -26,8 +26,15 @@ const getSearchParams = ({ filtering, page }: FetchProductParameter): URLSearchP
   return searchParams;
 };
 
-export async function fetchProduct(params: FetchProductParameter): Promise<{ products: Product[]; isLast: boolean }> {
-  const searchParams = '?' + getSearchParams({ ...params, page: params.page ?? 0 }).toString();
+export interface  FetchProductListReturnType {
+  products: Product[];
+  isLast: boolean;
+  currentPage: number;
+}
+
+export async function fetchProductList(params: FetchProductParameter):Promise<FetchProductListReturnType> {
+  const page =params.page ?? 0
+  const searchParams = '?' + getSearchParams({ ...params, page }).toString();
 
   const data = await fetchWithToken({
     url: END_POINTS.products + searchParams,
@@ -35,5 +42,5 @@ export async function fetchProduct(params: FetchProductParameter): Promise<{ pro
   });
   const result = (await data.json()) as ApiResponse<Product[]>;
 
-  return { products: result.content, isLast: result.last };
+  return { products: result.content, isLast: result.last , currentPage : page};
 }
