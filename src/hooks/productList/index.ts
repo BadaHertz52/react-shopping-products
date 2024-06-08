@@ -1,1 +1,1 @@
-export { default as useProductList } from './useProductList';
+export { default as useGetProductList } from './useGetProductList';

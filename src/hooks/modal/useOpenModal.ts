@@ -1,18 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-interface UseModalOpenParams {
-  isOpenModal: boolean;
+interface UseOpenModalProps {
+  isModalOpenState?: boolean;
 }
-
-const useOpenModal = ({ isOpenModal }: UseModalOpenParams) => {
-  const [openModal, setOpenModal] = useState(isOpenModal);
+const useOpenModal = (props: UseOpenModalProps = {}) => {
+  const [isModalOpen, setIsModalOpen] = useState(props.isModalOpenState ?? false);
   const rootEl = document.getElementById('root');
 
-  useEffect(() => {
-    setOpenModal(isOpenModal);
-  }, [isOpenModal]);
-
-  return { openModal, setOpenModal, rootEl };
+  return { isModalOpen, openModal: () => setIsModalOpen(true), closeModal: () => setIsModalOpen(false), rootEl };
 };
 
 export default useOpenModal;

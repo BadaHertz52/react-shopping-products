@@ -44,7 +44,7 @@ const CartItemCard = ({ cartItem }: CartItemCardProps) => {
 
   return (
     <li className={style.cartItemCard}>
-      <img className={style.img} src={cartItem.product.imageUrl} />
+      <img className={style.img} src={cartItem.product.imageUrl} alt="" />
       <CartItemInfo cartItem={cartItem} />
       <DeleteButton isPending={isPending} handleClick={handleClickDeleteButton} />
       <CartActionErrorModal error={error} />
@@ -57,10 +57,10 @@ const Skeleton = () => {
     <li className={style.cartItemCard}>
       <div className={getSkeletonClassName(style.img)} />
       <div className={style.info}>
-        <p className={getSkeletonClassName(style.name)}></p>
-        <p className={getSkeletonClassName(style.price)}></p>
+        <p className={getSkeletonClassName(style.name)} />
+        <p className={getSkeletonClassName(style.price)} />
       </div>
-      <button className={getSkeletonClassName(`${style.deleteButton} ${style.skeletonDeleteButton}`)}></button>
+      <div className={getSkeletonClassName(`${style.deleteButton} ${style.skeletonDeleteButton}`)} />
     </li>
   );
 };

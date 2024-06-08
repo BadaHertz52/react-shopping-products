@@ -52,6 +52,8 @@ export async function fetchGetCartList() {
   };
 }
 
+export type FetchGetCartListResponse = Awaited<ReturnType<typeof fetchGetCartList>>;
+
 export async function fetchDeleteCartList({ cartItemId }: { cartItemId: number }) {
   await fetchWithToken({
     url: `${END_POINTS.cartItems}/${cartItemId}`,

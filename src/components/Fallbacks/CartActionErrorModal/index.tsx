@@ -1,5 +1,6 @@
 import { useOpenModal, useToastModalPosition } from '@hooks/index';
 import { ToastModal } from 'badahertz52-react-modules-components';
+import { useLayoutEffect } from 'react';
 
 import CartActionError from './CartActionError';
 interface CartActionErrorModalProps {
@@ -7,26 +8,31 @@ interface CartActionErrorModalProps {
 }
 
 const CartActionErrorModal = ({ error }: CartActionErrorModalProps) => {
-  const { openModal, setOpenModal, rootEl } = useOpenModal({ isOpenModal: !!error });
+  const { isModalOpen, closeModal, rootEl, openModal } = useOpenModal();
 
   const { toastModalPosition } = useToastModalPosition({
     targetEl: document.getElementsByTagName('header')[0],
     placement: 'bottom',
   });
 
+  useLayoutEffect(() => {
+    if (error) openModal();
+  }, [error]);
+
   return (
     <>
       {toastModalPosition && (
         <ToastModal
-          openModal={openModal}
-          setOpenModal={setOpenModal}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
           position={toastModalPosition}
           modalTargetEl={rootEl}
-          toastDuration={3000}
+          toastDuration={3_000}
           isNeedAnimation={true}
-          animationDuration={2000}
+          animationDuration={2_000}
           backgroundColor={{ modal: '#ffc9c9' }}
           contentsPadding="0"
+          boxShadow=""
         >
           <CartActionError />
         </ToastModal>

@@ -4,12 +4,10 @@ import style from './style.module.css';
 
 const Header = () => {
   return (
-    <>
-      <header className={style.header}>
-        <Logo />
-        <CartBadgeButton />
-      </header>
-    </>
+    <header className={style.header}>
+      <Logo />
+      <CartBadgeButton />
+    </header>
   );
 };
 

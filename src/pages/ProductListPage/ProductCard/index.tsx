@@ -33,9 +33,9 @@ const Skeleton = () => {
     <li className={style.productCard}>
       <div className={getSkeletonClassName(`${style.image} ${style.skeletonImage}`)} />
       <div className={style.contents}>
-        <p className={getSkeletonClassName(style.skeletonRow)}></p>
-        <p className={getSkeletonClassName(style.skeletonRow)}></p>
-        <div className={getSkeletonClassName(`${cartActionButtonStyle.cartActionButton} ${style.skeletonImage}`)}></div>
+        <p className={getSkeletonClassName(style.skeletonRow)} />
+        <p className={getSkeletonClassName(style.skeletonRow)} />
+        <div className={getSkeletonClassName(`${cartActionButtonStyle.cartActionButton} ${style.skeletonImage}`)} />
       </div>
     </li>
   );

@@ -1,22 +1,27 @@
-import { useCartList } from '@hooks/index';
+import { useGetCartList } from '@hooks/index';
 import { BottomModal } from 'badahertz52-react-modules-components';
-import { Dispatch, SetStateAction } from 'react';
 
 import CartList from './CartList';
 import style from './style.module.css';
 import TotalAmount from './TotalAmount';
 
 interface CartListModalProps {
-  openModal: boolean;
-  setOpenModal: Dispatch<SetStateAction<boolean>>;
+  isModalOpen: boolean;
+  closeModal: () => void;
   rootEl: HTMLElement | null;
 }
-const CartListModal = ({ openModal, setOpenModal, rootEl }: CartListModalProps) => {
-  const { cartListMap, isLoading } = useCartList(true);
+const CartListModal = ({ isModalOpen, closeModal, rootEl }: CartListModalProps) => {
+  const { cartListMap, isLoading } = useGetCartList({ refetchOnMount: 'always' });
   const cartList = cartListMap ? Array.from(cartListMap.values()) : undefined;
 
+  const calculateTotalAmount = () => {
+    if (!cartList?.length) return 0;
+
+    return cartList.reduce((prev, curr) => prev + curr.quantity * curr.product.price, 0);
+  };
+
   return (
-    <BottomModal modalTargetEl={rootEl} openModal={openModal} setOpenModal={setOpenModal} animationDuration={2000}>
+    <BottomModal modalTargetEl={rootEl} isModalOpen={isModalOpen} closeModal={closeModal} animationDuration={2000}>
       <p className={style.title}>장바구니</p>
       {isLoading ? (
         <>
@@ -26,7 +31,7 @@ const CartListModal = ({ openModal, setOpenModal, rootEl }: CartListModalProps) 
       ) : (
         <>
           <CartList cartList={cartList} />
-          <TotalAmount cartList={cartList} />
+          <TotalAmount totalAmount={calculateTotalAmount()} />
         </>
       )}
 

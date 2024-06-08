@@ -1,5 +1,5 @@
 import { CartActionErrorModal, QuantityControl } from '@components/index';
-import { useCartList } from '@hooks/index';
+import { useGetCartList } from '@hooks/index';
 
 import CartAddButton from '../CartAddButton';
 
@@ -10,7 +10,7 @@ interface CartActionButtonProps {
 }
 
 const CartActionButton = ({ productId }: CartActionButtonProps) => {
-  const { cartListMap, error } = useCartList();
+  const { cartListMap, error } = useGetCartList();
   const cartItem = cartListMap?.get(productId);
 
   const className = `${style.cartActionButton} ${cartItem ? style.quantity : style.add} `;

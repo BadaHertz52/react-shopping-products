@@ -1,7 +1,7 @@
 import { Filtering } from '@appTypes/index';
 import { Dropdown, IntersectionObserverArea, PageRequestError } from '@components/index';
 import { CATEGORY_OPTIONS, LOAD_MORE_PRODUCTS_AMOUNT, PRICE_SORT_OPTIONS } from '@constants/index';
-import { useProductList } from '@hooks/index';
+import { useGetProductList } from '@hooks/index';
 import { useEffect, useRef, useState } from 'react';
 
 import ProductCard from './ProductCard';
@@ -38,7 +38,7 @@ const ProductListPage = () => {
   const [showMoreProductsSkeleton, setShowMoreProductsSkeleton] = useState(false);
   const observerTargetRef = useRef<HTMLDivElement | null>(null);
 
-  const { products, fetchNextPage, status, error, hasNextPage } = useProductList(filtering);
+  const { products, fetchNextPage, status, error, hasNextPage } = useGetProductList(filtering);
 
   useEffect(() => {
     if (status !== 'pending' && showMoreProductsSkeleton) {

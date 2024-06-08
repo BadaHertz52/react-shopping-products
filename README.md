@@ -8,13 +8,15 @@
 
 #### step1
 
-<img src="./readmeImages/step1.gif" height="500px" />
+<img src="./readmeImages/step1.gif" height="500px" alt="step1 구현 화면" />
 
-### 오류 화면
+#### step2
 
-#### 페이지 렌더링 시 api 요청 오류 화면
+<img  src="./readmeImages/step2.gif" alt="step2 구현 화면">
 
-<img src="./readmeImages/pageError.png" width="400px" alt="페이지 렌더링 시 api 요청 오류 화면">
+#### 데이터 fetch 결과에 따른 UI
+
+<img  src="./readmeImages//ste2_layout.jpg" width="600px" alt="데이터 fetch 결과에 따른 UI"/>
 
 ## 기술 스택
 
@@ -124,3 +126,7 @@ npm run test
 
   </div>
 </details>
+
+## 장바구니 목록 구조,로직 정리
+
+<img  src="./readmeImages/cart.jpg" alt='장바구니 목록 로직,구조 정리' width="600px"/>

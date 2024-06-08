@@ -26,14 +26,14 @@ const getSearchParams = ({ filtering, page }: FetchProductParameter): URLSearchP
   return searchParams;
 };
 
-export interface  FetchProductListReturnType {
+export interface FetchProductListReturnType {
   products: Product[];
   isLast: boolean;
   currentPage: number;
 }
 
-export async function fetchProductList(params: FetchProductParameter):Promise<FetchProductListReturnType> {
-  const page =params.page ?? 0
+export async function fetchProductList(params: FetchProductParameter): Promise<FetchProductListReturnType> {
+  const page = params.page ?? 0;
   const searchParams = '?' + getSearchParams({ ...params, page }).toString();
 
   const data = await fetchWithToken({
@@ -42,5 +42,5 @@ export async function fetchProductList(params: FetchProductParameter):Promise<Fe
   });
   const result = (await data.json()) as ApiResponse<Product[]>;
 
-  return { products: result.content, isLast: result.last , currentPage : page};
+  return { products: result.content, isLast: result.last, currentPage: page };
 }

@@ -12,7 +12,7 @@ interface CartListProps {
 const CartList = ({ cartList }: CartListProps) => {
   return (
     <ul className={style.cartList}>
-      {cartList?.[0] ? (
+      {cartList?.length ? (
         cartList.map((cartItem) => <CartItemCard key={cartItem.id} cartItem={cartItem} />)
       ) : (
         <div className={style.empty}>
